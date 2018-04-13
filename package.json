@@ -1,52 +1,47 @@
 {
-  "name": "karaapp",
-  "version": "0.1.0",
-  "private": true,
-  "main": "public/electron.js",
-  "homepage": "./",
-  "author": "Captain Electron",
-  "dependencies": {
-    "electron-is-dev": "^0.3.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-scripts": "1.1.4",
-    "@fortawesome/fontawesome": "^1.1.5",
-    "@fortawesome/react-fontawesome": "0.0.18",
-    "concurrently": "^3.5.1",
-    "firebase": "^4.12.1",
-    "firebaseui": "^2.7.0",
-    "react-bootstrap": "^0.32.1",
-    "react-dragscroll": "^2.0.1",
-    "react-hide-div": "^1.0.1",
-    "react-medium-editor": "^1.8.1",
-    "react-milkdown": "^1.1.1",
-    "react-quill": "^1.2.7",
-    "react-router-dom": "4.2.2",
-    "react-scrollbar": "^0.5.4"
-  },
+  "name": "Kara",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Bloc notes in live",
+  "author": "Sam <sam.mamane@hotmail.fr>",
+  "main": "app.js",
   "scripts": {
-    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on https://localhost:3000 && electron .\"",
-    "start": "HTTPS=true react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "electron-pack": "build -c.extraMetadata.main=build/electron.js",
-    "preelectron-pack": "yarn build"
-  },
-  "devDependencies": {
-    "concurrently": "^3.5.1",
-    "electron": "^1.8.4",
-    "electron-builder": "^20.8.1",
-    "wait-on": "^2.1.0"
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron .",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "build": {
-    "appId": "com.example.electron-cra",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
-    "directories":{
-      "buildResources": "assets"
+    "appId": "com.sammamane.spotify",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    },
+    "win": {
+      "target": "Squirrel",
+      "icon": "assets/icon.ico"
     }
+  },
+  "dependencies": {
+    "electron-ad-blocker": "0.2.0",
+    "electron-widevinecdm": "^6.0.2",
+    "open": "0.0.5"
+  },
+  "devDependencies": {
+    "electron": "^2.0.0-beta.6",
+    "electron-builder": "20.8.1"
   }
 }
